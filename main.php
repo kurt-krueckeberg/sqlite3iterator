@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+use SQLite3\ResultIterator;
 
 include "vendor/autoload.php";
 
@@ -21,20 +22,19 @@ $sqlite->createCollation('RMNOCASE', 'strnatcmp');
 
 var_dump($sqlite);
 
-$query = "select count(*) as total from NameTable";
+$query = 'select surname, given from NameTable where surname="Zollinger"';
 
-$r = $sqlite->query($query);
+$result_set = $sqlite->query($query);
 
-$result = $r->fetchArray();
+while($row = $result_set->fetchArray()) {
 
-var_dump($result);
-
-
-while($row = $returned_set->fetchArray() !== false) {
-
-  echo $row[0] . "\n";
+  print_r($row);
+  echo "-------\n";
 
 }
 
+$result_set = $sqlite->query($query);
+
+$iter = new ResultIterator($result_set); 
 return;
 ?>

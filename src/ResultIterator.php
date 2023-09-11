@@ -1,8 +1,8 @@
 <?php
 declare (strict_types=1);
-namespace SQLite;
+namespace SQLite3;
 
-class ResultIterator implements Iterator {
+class ResultIterator implements \Iterator {
 
     private $current_ = array();
     
