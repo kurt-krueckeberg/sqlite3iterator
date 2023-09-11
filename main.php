@@ -5,7 +5,7 @@ include "vendor/autoload.php";
 
 try {
 
-  $sqlite = new SQLite3('x.db');
+  $sqlite = new SQLite3('test.rmtree');
   
 } catch(Exception $e) {
 
@@ -21,15 +21,20 @@ $sqlite->createCollation('RMNOCASE', 'strnatcmp');
 
 var_dump($sqlite);
 
-return;
+$query = "select count(*) as total from NameTable";
 
-$query = "...";
+$r = $sqlite->query($query);
 
-$$db->query($query);
+$result = $r->fetchArray();
 
-while($result = $returned_set->fetchArray() !== false) {
+var_dump($result);
 
-  echo $row['col1'] . "\n";
+
+while($row = $returned_set->fetchArray() !== false) {
+
+  echo $row[0] . "\n";
 
 }
+
+return;
 ?>

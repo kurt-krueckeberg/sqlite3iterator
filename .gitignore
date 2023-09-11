@@ -1,3 +1,5 @@
 x
 composer.lock
 vendor/
+*.db
+*.rmtree
