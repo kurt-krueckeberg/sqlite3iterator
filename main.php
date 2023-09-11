@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-include "ResultIterator.php";
+include "vendor/autoload.php";
 
 try {
 
